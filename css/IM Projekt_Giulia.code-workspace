@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../Übungsdateien"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "IM Projekt_Giulia"
+	}
+}
