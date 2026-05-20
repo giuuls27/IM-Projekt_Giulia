@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="css" href="css/style.css" />
+  </head>
+  <body>
+    <!--Haupt-Wrapper mit seitlichen Balken-->
+    <div class="page-wrapper">
+      <!--Linker Balken-->
+      <div class="side-bar"></div>
+
+      <!--Inhalt Mitte-->
+      <main class="main-content">
+        <!--Logo Bereich-->
+        <header class="header">
+          <div class="logo-wrapper">
+            <!--Logo Bild-->
+            <img
+              src="Bilder/Logo.png"
+              alt="Shutterlight Logo"
+              class="logo-img"
+            />
+            <div class="logo-text-wrapper">
+              <span class="logo-titel">SHUTTERLIGHT</span>
+              <span class="logo-tagline"
+                >finde das perfektes Licht für dein nächsten Shot</span
+              >
+            </div>
+          </div>
+        </header>
+
+        <!--Suchformular-->
+        <form id="searchform">
+          <input
+            type="text"
+            id="place-input"
+            placeholder="gib einen gewünschten Ort ein, z.B Chur"
+            arial-lable="Ort eingeben"
+          />
+          <button type="submit">suchen</button>
+        </form>
+
+        <!--Sonnen-Animation-->
+        <div class="sun-wrapper">
+          <img
+            src="Bilder/Sonne_animation.svg"
+            alt="Sonne"
+            id="sun-animation"
+          />
+        </div>
+      </main>
+
+      <!--Rechter Balken-->
+      <div class="side-bar"></div>
+    </div>
+
+    <script src="js/script.js" type="module"></script>
+  </body>
+</html>

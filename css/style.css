@@ -1,0 +1,26 @@
+/*Schrift*/
+@font-face {
+    font-family: 'Jost';
+    src: url('../schrift/Jost/Jost-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+}
+
+/* Farb Variabeln */
+:root {
+    --farbe-hintergrund: #F7D8B9;
+    --farbe-balken:rgba(255, 153, 64, 0.70);   /* FF9940 70% */
+    --farbe-button-bg: rgba(255, 153, 64, 0.39);   /* FF9940 39% */
+    --farbe-orange: #FF9940;
+    --farbe-rot: #F16450;  
+    --farbe-rot-hell: rgba(241, 100, 80, 0.78);   /* F16450 78% */
+    --farbe-rot-sehr-hell: rgba(241, 100, 80, 0.59);   /* F16450 59% */
+}
+
+/* Browser-Standarts entfernen */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+}
