@@ -24,3 +24,132 @@
     box-sizing: border-box;
     font-family: 'Jost', sans-serif;
 }
+
+body {
+    background-color: var(--farbe-hintergrund);
+    min-height: 100vh;
+}
+
+/*Seiten-layout*/
+
+.page-wrapper {
+    display: flex;
+    flex-direction: row;
+    min-height: 200vh;
+}
+
+/* Orangene-Seitenbalken*/
+
+.side-bar {
+    width: 40px;
+    background-color: var(--farbe-balken);
+    flex-shrink: 0;
+}
+
+/* Mittlerer Inhalt */
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 40px;
+    gap: 20px;
+    background-color: var(--farbe-hintergrund);
+}
+
+/* Header und Logo */
+
+.header {
+    width: 100%;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-img {
+    width: 90px;       
+    height: 90px;
+    object-fit: contain;
+}
+
+.logo-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.logo-titel {
+    font-size: 36px;
+    font-weight: 700;       
+    color: var(--farbe-orange);
+    letter-spacing: 3px;
+}
+
+.logo-tagline {
+    font-size: 14px;
+    font-weight: 500;       
+    color: var(--farbe-orange);
+}
+
+/* Suchformular */ 
+
+#searchform {
+     display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+#searchform input {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--farbe-button-bg);
+    color: var(--farbe-rot);
+    font-size: 14px;
+    font-weight: 500;
+    outline: none;
+}
+
+#searchform input::placeholder {
+    color: var(--farbe-rot-sehr-hell);
+}
+
+#searchform button {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--farbe-button-bg);
+    color: var(--farbe-rot);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#searchform button:hover {
+    background-color: var(--farbe-orange);
+    color: var(--farbe-rot)
+}
+
+/* Sonnen Animation */ 
+.sun-wrapper {
+    width: 100%;
+    max-width: 550px;
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+}
+
+#sun-animation {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
