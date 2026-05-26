@@ -5,6 +5,15 @@ const form_ct = document.querySelector ('#searchform');
 const place_input = document.querySelector ('#place-input');
 const sun_img = document.querySelector ('#sun-animation');
 
+// Lottie Sonnen-Animation laden
+lottie.loadAnimation({
+    container: document.querySelector('#sun-wrapper'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'Bilder/sonne_animation.json'
+});
+
 console.log('DOM Elemente geladen');
 
 // 2. Daten-Objekte - daten von API speichern - Startwerte leer, weil werden nach Suche befüllt
@@ -53,7 +62,6 @@ console.log('API Funktionen bereit')
 
 function zeige_ergebnis(){
 
-    // Zeitformat: schweizer Format Stunden:Minuten
     const zeitformat = {
         timeZone: sun_details.timezone,
         hour12: false,
@@ -61,13 +69,11 @@ function zeige_ergebnis(){
         minute: '2-digit'
     }
 
-    // Zeiten umrechnen von API-Format zu lesbarer Uhrzeit
     const zeit_morgen    = new Date(sun_details.morgendämmerung).toLocaleTimeString('de-CH', zeitformat);
     const zeit_aufgang   = new Date(sun_details.sunrise).toLocaleTimeString('de-CH', zeitformat);
     const zeit_untergang = new Date(sun_details.sunset).toLocaleTimeString('de-CH', zeitformat);
     const zeit_abend     = new Date(sun_details.abenddämmerung).toLocaleTimeString('de-CH', zeitformat);
 
-    //Datum formatieren 
     const datum = new Date().toLocaleDateString('de-CH', {
         timeZone: sun_details.timezone,
         weekday: 'long',
@@ -76,7 +82,7 @@ function zeige_ergebnis(){
     });
 
     // Ortsname + Datum ins HTML schreiben 
-    document.querySelector ('#city-name').innerText = `${sun_details.name} - ${datum}`;
+    document.querySelector('#city-name').innerText = `${sun_details.name} - ${datum}`;
 
     // Zeiten in die Karten schreiben 
     document.querySelector('#zeit-morgen').innerText    = zeit_morgen;
@@ -84,27 +90,20 @@ function zeige_ergebnis(){
     document.querySelector('#zeit-untergang').innerText = zeit_untergang;
     document.querySelector('#zeit-abend').innerText     = zeit_abend;
 
-    //Ergebnis sichtbar machen 
-    document.querySelector('#result').classList.remove('hidden');
-
-    // Sonne verstecken 
-     document.querySelector('.sun-wrapper').classList.add('hidden');
-
-     console.log('Ergebnis angezeigt ✅');
-
-     // Ergebnis sichtbar machen 
+    // Ergebnis sichtbar machen 
     document.querySelector('#result').classList.remove('hidden');
 
     // Sonne verstecken 
     document.querySelector('.sun-wrapper').classList.add('hidden');
 
-    // Hintergrund Sonnen einblenden ← HIER innerhalb der Funktion
+    // Hintergrund Sonnen einblenden
     document.querySelectorAll('.bg-sonne').forEach(function(sonne) {
         sonne.classList.add('sichtbar');
     });
 
     console.log('Ergebnis angezeigt ✅');
 }
+
 
 // 5. Event Listener - warten bis User auf "suchen" klickt 
 
@@ -191,5 +190,68 @@ document.querySelectorAll('.detail-box').forEach(function(box) {
         this.classList.add('hidden');
     });
 });
+
+// 7. Tagesverlauf
+
+const tagesverlauf_btn = document.querySelector('#tagesverlauf-btn');
+const tagesverlauf_ct  = document.querySelector('#tagesverlauf');
+
+// Button Klick → Tagesverlauf ein/ausblenden
+tagesverlauf_btn.addEventListener('click', function() {
+    if (tagesverlauf_ct.classList.contains('hidden')) {
+        tagesverlauf_ct.classList.remove('hidden');
+        zeige_tagesverlauf();
+    } else {
+        tagesverlauf_ct.classList.add('hidden');
+    }
+});
+
+// Klick auf tv-icon → Tagesverlauf schliessen ← NEU HIER
+document.querySelector('.tv-icon').addEventListener('click', function() {
+    tagesverlauf_ct.classList.add('hidden');
+});
+
+// Tagesverlauf berechnen und anzeigen
+function zeige_tagesverlauf() {
+
+    const zeitformat = {
+        timeZone: sun_details.timezone,
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit'
+    }
+
+    // Zeiten holen
+    const zeit_morgen    = new Date(sun_details.morgendämmerung).toLocaleTimeString('de-CH', zeitformat);
+    const zeit_aufgang   = new Date(sun_details.sunrise).toLocaleTimeString('de-CH', zeitformat);
+    const zeit_untergang = new Date(sun_details.sunset).toLocaleTimeString('de-CH', zeitformat);
+    const zeit_abend     = new Date(sun_details.abenddämmerung).toLocaleTimeString('de-CH', zeitformat);
+
+    // Zeiten unten anzeigen
+    document.querySelector('#tv-morgen-zeit').innerText   = zeit_morgen;
+    document.querySelector('#tv-aufgang-zeit').innerText  = zeit_aufgang;
+    document.querySelector('#tv-untergang-zeit').innerText = zeit_untergang;
+    document.querySelector('#tv-abend-zeit').innerText    = zeit_abend;
+
+    // Berechne aktuelle Position der Sonne auf dem Balken
+    const start   = new Date(sun_details.morgendämmerung).getTime();
+    const ende    = new Date(sun_details.abenddämmerung).getTime();
+    const jetzt   = new Date().getTime();
+    const gesamt  = ende - start;
+    const vergangen = jetzt - start;
+
+    // Position in % (zwischen 0% und 100%)
+    let position = (vergangen / gesamt) * 100;
+    position = Math.max(0, Math.min(100, position));  // zwischen 0-100 begrenzen
+
+    // Sonne erst links starten, dann animieren
+    const sonne_el = document.querySelector('#tv-sonne');
+    sonne_el.style.left = '0%';          // Start links
+
+    // Nach kurzer Pause zur echten Position fahren
+    setTimeout(function() {
+        sonne_el.style.left = `${position}%`;
+    }, 100);
+}
 
 

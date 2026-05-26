@@ -14,6 +14,7 @@
     --farbe-rot: #F16450;  
     --farbe-rot-hell: rgba(241, 100, 80, 0.78);   /* F16450 78% */
     --farbe-rot-sehr-hell: rgba(241, 100, 80, 0.59);   /* F16450 59% */
+    --farbe-orange-hell-balken: rgba(241, 100, 80, 0.46); 
 }
 
 /* Browser-Standarts entfernen */
@@ -360,3 +361,106 @@ body {
 .bg-sonne.sichtbar {
     opacity: 0.15;
 }
+
+/* Tagesverlauf */
+.tagesverlauf-box {
+    position: relative;
+    width: 100%;
+    background-color: var(--farbe-button-bg);
+    border-radius: 16px;
+    padding: 20px 24px;
+}
+
+/* Sonne Icon oben rechts */
+.tv-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    transition: transform 0.3s ease;
+}
+
+.tv-icon:hover {
+    transform: scale(1.5);
+}
+
+/* Titel */
+.tv-titel {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--farbe-rot);
+    margin-bottom: 16px;
+}
+
+/* Balken Wrapper */
+.tv-balken-wrapper {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+/* Orangener Balken */
+.tv-balken {
+    position: relative;
+    width: 100%;
+    height: 30px;
+      background: linear-gradient(
+        to right,
+        var(--farbe-orange) 0%,
+        var(--farbe-orange) 25%,
+        var(--farbe-rot) 25%,
+        var(--farbe-rot) 28%,
+        var(--farbe-orange-hell-balken) 28%,
+        var(--farbe-orange-hell-balken) 72%,
+        var(--farbe-rot) 72%,
+        var(--farbe-rot) 75%,
+        var(--farbe-orange) 75%,
+        var(--farbe-orange) 100%
+    );
+    border-radius: 30px;
+    overflow: visible;
+}
+
+/* Rote Markierungen bei Aufgang und Untergang */
+.tv-markierung {
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    background-color: var(--farbe-rot);
+    border-radius: 4px;
+}
+
+/* Sonne Position auf dem Balken */
+.tv-sonne-position {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    transition: left 2s ease;   /* Animation der Sonne */
+}
+
+/* Zeiten unten */
+.tv-zeiten {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.tv-zeit-punkt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    color: var(--farbe-rot-hell);
+    font-weight: 500;
+}
+
+.tv-zeit-label {
+    font-size: 10px;
+    color: var(--farbe-rot-sehr-hell);
+}
+
+
+

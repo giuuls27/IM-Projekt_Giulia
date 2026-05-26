@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="Animation/Sonnen_Animation.json"></script>
   </head>
   <body>
     <!-- Hintergrund Sonnen -->
@@ -47,13 +48,8 @@
         </form>
 
         <!--Sonnen-Animation-->
-        <div class="sun-wrapper">
-          <img
-            src="Bilder/Sonne_animation.svg"
-            alt="Sonne"
-            id="sun-animation"
-          />
-        </div>
+         <div id="sun-wrapper" class="sun-wrapper"></div>
+      
 
         <!-- Ergebnis bereich - erst versteckt und erscheint dann nach der Suche-->
         <div id="result" class="hidden">
@@ -181,7 +177,36 @@
           <button id="tagesverlauf-btn">Tagesverlauf</button>
 
           <!-- Tagesverlauf Bereich - erst versteckt -->
-          <div id="tagesverlauf" class="hidden"></div>
+          <div id="tagesverlauf" class="hidden">
+            <div class="tagesverlauf-box">
+              <!-- Sonne Icon oben rechts -->
+        <img src="Bilder/kleine_Sonne.svg" alt="Sonne" class="tv-icon" />
+        <!-- Titel -->
+        <h3 class="tv-titel">Tagesverlauf</h3>
+        <!-- Balken mit Sonne-Position -->
+        <div class="tv-balken-wrapper">
+            <div class="tv-balken">
+                <img src="Bilder/Sonne_weiss.svg" id="tv-sonne" class="tv-sonne-position" />
+            </div>
+        </div>
+         <!-- Zeiten unten -->
+        <div class="tv-zeiten">
+            <div class="tv-zeit-punkt">
+                <span id="tv-morgen-zeit"></span>
+                <span class="tv-zeit-label">Morgendämmerung</span>
+            </div>
+            <div class="tv-zeit-punkt">
+                <span id="tv-aufgang-zeit"></span>
+            </div>
+            <div class="tv-zeit-punkt">
+                <span id="tv-untergang-zeit"></span>
+            </div>
+            <div class="tv-zeit-punkt">
+                <span id="tv-abend-zeit"></span>
+                <span class="tv-zeit-label">Abenddämmerung</span>
+            </div>
+        </div>
+          </div>
         </div>
       </main>
 
