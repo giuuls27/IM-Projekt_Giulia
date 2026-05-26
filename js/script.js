@@ -91,6 +91,19 @@ function zeige_ergebnis(){
      document.querySelector('.sun-wrapper').classList.add('hidden');
 
      console.log('Ergebnis angezeigt ✅');
+
+     // Ergebnis sichtbar machen 
+    document.querySelector('#result').classList.remove('hidden');
+
+    // Sonne verstecken 
+    document.querySelector('.sun-wrapper').classList.add('hidden');
+
+    // Hintergrund Sonnen einblenden ← HIER innerhalb der Funktion
+    document.querySelectorAll('.bg-sonne').forEach(function(sonne) {
+        sonne.classList.add('sichtbar');
+    });
+
+    console.log('Ergebnis angezeigt ✅');
 }
 
 // 5. Event Listener - warten bis User auf "suchen" klickt 
@@ -180,4 +193,3 @@ document.querySelectorAll('.detail-box').forEach(function(box) {
 });
 
 
-    

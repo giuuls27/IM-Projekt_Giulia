@@ -316,19 +316,47 @@ body {
 
 
 #detail-morgen {
-    align-self: flex-start;      /* unter Morgendämmerung - links */
+    margin-left: -60px; /* unter Morgendämmerung - links */
 }
 
 #detail-aufgang {
-    align-self: center;          /* unter Sonnenaufgang - mitte links */
-    margin-left: 5%;
+          margin-left: 100px;  /* unter Sonnenaufgang - mitte links */
+    
 }
 
 #detail-untergang {
-    align-self: flex-end;        /* unter Sonnenuntergang - mitte rechts */
-    margin-right: 25%;
+    align-self: flex-start;
+     margin-left: 340px; /* unter Sonnenuntergang - mitte rechts */
 }
 
 #detail-abend {
-    align-self: flex-end;        /* unter Abenddämmerung - rechts */
+         align-self: flex-end; /* unter Abenddämmerung - rechts */
+         margin-right: -85px;
+}
+
+/* Sonne links */
+.bg-sonne-links {
+    left: -600px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+}
+
+/* Sonne Rechts */
+.bg-sonne-rechts {
+    right: -600px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg) scaleX(-1);
+}
+
+.bg-sonne {
+    position: fixed;
+    width: 1700px;     
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.8s ease;
+}
+
+.bg-sonne.sichtbar {
+    opacity: 0.15;
 }
