@@ -5,14 +5,14 @@ const form_ct = document.querySelector ('#searchform');
 const place_input = document.querySelector ('#place-input');
 const sun_img = document.querySelector ('#sun-animation');
 
-// Lottie Sonnen-Animation laden
-lottie.loadAnimation({
-    container: document.querySelector('#sun-wrapper'),
-    renderer: 'svg',
-    loop: true,
-    autoplay: true,
-    path: 'Bilder/sonne_animation.json'
+// Lottie Ping-Pong: Sonne geht runter, dann wieder hoch
+let lottie_richtung = 1;
+sun_img.addEventListener('complete', function () {
+    lottie_richtung *= -1;
+    sun_img.setDirection(lottie_richtung);
+    sun_img.play();
 });
+
 
 console.log('DOM Elemente geladen');
 
@@ -206,7 +206,7 @@ tagesverlauf_btn.addEventListener('click', function() {
     }
 });
 
-// Klick auf tv-icon → Tagesverlauf schliessen ← NEU HIER
+// Klick auf tagesverlauf-icon → Tagesverlauf schliessen 
 document.querySelector('.tv-icon').addEventListener('click', function() {
     tagesverlauf_ct.classList.add('hidden');
 });
@@ -229,14 +229,12 @@ function zeige_tagesverlauf() {
 
     // Zeiten unten anzeigen
     document.querySelector('#tv-morgen-zeit').innerText   = zeit_morgen;
-    document.querySelector('#tv-aufgang-zeit').innerText  = zeit_aufgang;
-    document.querySelector('#tv-untergang-zeit').innerText = zeit_untergang;
     document.querySelector('#tv-abend-zeit').innerText    = zeit_abend;
 
     // Berechne aktuelle Position der Sonne auf dem Balken
     const start   = new Date(sun_details.morgendämmerung).getTime();
     const ende    = new Date(sun_details.abenddämmerung).getTime();
-    const jetzt   = new Date().getTime();
+    const jetzt   = new Date(new Date().toLocaleString('en-US', { timeZone: sun_details.timezone })).getTime();
     const gesamt  = ende - start;
     const vergangen = jetzt - start;
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
-    <script src="Animation/Sonnen_Animation.json"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </head>
   <body>
     <!-- Hintergrund Sonnen -->
@@ -29,7 +29,7 @@
             <div class="logo-text-wrapper">
               <span class="logo-titel">SHUTTERLIGHT</span>
               <span class="logo-tagline"
-                >finde das perfektes Licht für dein nächsten Shot</span
+                >Finde das perfekte Licht für deinen nächsten Shot.</span
               >
             </div>
           </div>
@@ -48,7 +48,15 @@
         </form>
 
         <!--Sonnen-Animation-->
-         <div id="sun-wrapper" class="sun-wrapper"></div>
+        <div id="sun-wrapper" class="sun-wrapper">
+          <lottie-player
+            id="sun-animation"
+            src="Animation/Sonnen_Animation.json"
+            background="transparent"
+            speed="1"
+            autoplay>
+          </lottie-player>
+        </div>
       
 
         <!-- Ergebnis bereich - erst versteckt und erscheint dann nach der Suche-->
@@ -63,114 +71,96 @@
 
           <div id="karten-container">
             <!-- Karte1: Morgendämmerung-->
-            <div class="zeit-karte" id="karte-morgen">
-              <p class="karte-label">Morgendämmerung</p>
-              <p class="karte-zeit" id="zeit-morgen">--:--</p>
-              <img
-                src="Bilder/Sonnen_unter.svg"
-                alt="Morgendämmerung"
-                class="karte-icon"
-              />
-              <p class="karte-tipp">Tippe für Details</p>
+            <div class="karte-wrapper">
+              <div class="zeit-karte" id="karte-morgen">
+                <p class="karte-label">Morgendämmerung</p>
+                <p class="karte-zeit" id="zeit-morgen">--:--</p>
+                <img
+                  src="Bilder/Sonnen_unter.svg"
+                  alt="Morgendämmerung"
+                  class="karte-icon"
+                />
+                <p class="karte-tipp">Tippe für Details</p>
+              </div>
+              <div id="detail-morgen" class="detail-box hidden">
+                <img src="Bilder/kleine_Sonne.svg" alt="Sonne" class="detail-icon" />
+                <h3 class="detail-titel">Morgendämmerung</h3>
+                <p class="detail-text">
+                  Die Morgendämmerung bietet weiches, diffuses Licht ohne harte
+                  Schatten — ideal für Stadtfotos, Landschaften und
+                  Langzeitbelichtungen.
+                </p>
+              </div>
             </div>
 
             <!-- Karte2: Sonnenaufgang-->
-            <div class="zeit-karte" id="karte-aufgang">
-              <p class="karte-label">Sonnenaufgang</p>
-              <p class="karte-zeit" id="zeit-aufgang">--:--</p>
-              <img
-                src="Bilder/Sonnen_unter.svg"
-                alt="Sonnenaufgang"
-                class="karte-icon"
-              />
-              <p class="karte-tipp">Tippe für Details</p>
+            <div class="karte-wrapper">
+              <div class="zeit-karte" id="karte-aufgang">
+                <p class="karte-label">Sonnenaufgang</p>
+                <p class="karte-zeit" id="zeit-aufgang">--:--</p>
+                <img
+                  src="Bilder/Sonnen_unter.svg"
+                  alt="Sonnenaufgang"
+                  class="karte-icon"
+                />
+                <p class="karte-tipp">Tippe für Details</p>
+              </div>
+              <div id="detail-aufgang" class="detail-box hidden">
+                <img src="Bilder/kleine_Sonne.svg" alt="Sonne" class="detail-icon" />
+                <h3 class="detail-titel">Sonnenaufgang</h3>
+                <p class="detail-text">
+                  Der Sonnenaufgang taucht die Welt in warmes Gold und lange
+                  Schatten. Das Licht ist weich und direkt — perfekt für Portraits,
+                  Landschaften und alles was Tiefe braucht.
+                </p>
+              </div>
             </div>
 
             <!--Karte3: Sonnenuntergang-->
-            <div class="zeit-karte" id="karte-untergang">
-              <p class="karte-label">Sonnenuntergang</p>
-              <p class="karte-zeit" id="zeit-untergang">--:--</p>
-              <img
-                src="Bilder/SVG_Sonnenauf.svg"
-                alt="Sonnenuntergang"
-                class="karte-icon"
-              />
-              <p class="karte-tipp">Tippe für Details</p>
+            <div class="karte-wrapper">
+              <div class="zeit-karte" id="karte-untergang">
+                <p class="karte-label">Sonnenuntergang</p>
+                <p class="karte-zeit" id="zeit-untergang">--:--</p>
+                <img
+                  src="Bilder/SVG_Sonnenauf.svg"
+                  alt="Sonnenuntergang"
+                  class="karte-icon"
+                />
+                <p class="karte-tipp">Tippe für Details</p>
+              </div>
+              <div id="detail-untergang" class="detail-box hidden">
+                <img src="Bilder/kleine_Sonne.svg" alt="Sonne" class="detail-icon" />
+                <h3 class="detail-titel">Sonnenuntergang</h3>
+                <p class="detail-text">
+                  Die Sonne taucht Himmel und Horizont in warmes Orange und Pink —
+                  ideal für Silhouetten, Landschaften und dramatische
+                  Architekturfotos.
+                </p>
+              </div>
             </div>
 
             <!--Karte4: Abenddämmerung-->
-            <div class="zeit-karte" id="karte-abend">
-              <p class="karte-label">Abenddämmerung</p>
-              <p class="karte-zeit" id="zeit-abend">--:--</p>
-              <img
-                src="Bilder/SVG_Sonnenauf.svg"
-                alt="Abenddämmerung"
-                class="karte-icon"
-              />
-              <p class="karte-tipp">Tippe für Details</p>
+            <div class="karte-wrapper">
+              <div class="zeit-karte" id="karte-abend">
+                <p class="karte-label">Abenddämmerung</p>
+                <p class="karte-zeit" id="zeit-abend">--:--</p>
+                <img
+                  src="Bilder/SVG_Sonnenauf.svg"
+                  alt="Abenddämmerung"
+                  class="karte-icon"
+                />
+                <p class="karte-tipp">Tippe für Details</p>
+              </div>
+              <div id="detail-abend" class="detail-box hidden">
+                <img src="Bilder/kleine_Sonne.svg" alt="Sonne" class="detail-icon" />
+                <h3 class="detail-titel">Abenddämmerung</h3>
+                <p class="detail-text">
+                  Nach dem Sonnenuntergang hüllt sich der Himmel in tiefes Blau und
+                  sanftes Abendlicht — ideal für Stadtpanoramen,
+                  Langzeitbelichtungen und stimmungsvolle Nachtaufnahmen.
+                </p>
+              </div>
             </div>
-          </div>
-
-          <!-- Detail Boxen - erscheinen beim Klick auf Karte -->
-
-          <!-- Detail Boxen - Morgendämmerung -->
-
-          <div id="detail-morgen" class="detail-box hidden">
-            <img
-              src="Bilder/kleine_Sonne.svg"
-              alt="Sonne"
-              class="detail-icon"
-            />
-            <h3 class="detail-titel">Morgendämmerung</h3>
-            <p class="detail-text">
-              Die Morgendämmerung bietet weiches, diffuses Licht ohne harte
-              Schatten — ideal für Stadtfotos, Landschaften und
-              Langzeitbelichtungen.
-            </p>
-          </div>
-
-          <!-- Detail Boxen - Sonnenaufgang -->
-          <div id="detail-aufgang" class="detail-box hidden">
-            <img
-              src="Bilder/kleine_Sonne.svg"
-              alt="Sonne"
-              class="detail-icon"
-            />
-            <h3 class="detail-titel">Sonnenaufgang</h3>
-            <p class="detail-text">
-              Der Sonnenaufgang taucht die Welt in warmes Gold und lange
-              Schatten. Das Licht ist weich und direkt — perfekt für Portraits,
-              Landschaften und alles was Tiefe braucht.
-            </p>
-          </div>
-
-          <!-- Detail Boxen - Abenddämmerung -->
-          <div id="detail-untergang" class="detail-box hidden">
-            <img
-              src="Bilder/kleine_Sonne.svg"
-              alt="Sonne"
-              class="detail-icon"
-            />
-            <h3 class="detail-titel">Sonnenuntergang</h3>
-            <p class="detail-text">
-              Die Sonne taucht Himmel und Horizont in warmes Orange und Pink —
-              ideal für Silhouetten, Landschaften und dramatische
-              Architekturfotos.
-            </p>
-          </div>
-          <!-- Detail Boxen - Sonnenuntergang -->
-          <div id="detail-abend" class="detail-box hidden">
-            <img
-              src="Bilder/kleine_Sonne.svg"
-              alt="Sonne"
-              class="detail-icon"
-            />
-            <h3 class="detail-titel">Abenddämmerung</h3>
-            <p class="detail-text">
-              Nach dem Sonnenuntergang hüllt sich der Himmel in tiefes Blau und
-              sanftes Abendlicht — ideal für Stadtpanoramen,
-              Langzeitbelichtungen und stimmungsvolle Nachtaufnahmen.
-            </p>
           </div>
 
           <!-- Tagesverlauf Button -->
@@ -189,23 +179,18 @@
                 <img src="Bilder/Sonne_weiss.svg" id="tv-sonne" class="tv-sonne-position" />
             </div>
         </div>
-         <!-- Zeiten unten -->
+
+         <!-- Zeiten auf Tagesverlauf -->
         <div class="tv-zeiten">
-            <div class="tv-zeit-punkt">
-                <span id="tv-morgen-zeit"></span>
-                <span class="tv-zeit-label">Morgendämmerung</span>
-            </div>
-            <div class="tv-zeit-punkt">
-                <span id="tv-aufgang-zeit"></span>
-            </div>
-            <div class="tv-zeit-punkt">
-                <span id="tv-untergang-zeit"></span>
-            </div>
-            <div class="tv-zeit-punkt">
-                <span id="tv-abend-zeit"></span>
-                <span class="tv-zeit-label">Abenddämmerung</span>
-            </div>
-        </div>
+    <div class="tv-zeit-punkt">
+        <span id="tv-morgen-zeit"></span>
+        <span class="tv-zeit-label">Morgendämmerung</span>
+    </div>
+    <div class="tv-zeit-punkt">
+        <span id="tv-abend-zeit"></span>
+        <span class="tv-zeit-label">Abenddämmerung</span>
+    </div>
+</div>
           </div>
         </div>
       </main>
